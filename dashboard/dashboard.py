@@ -106,7 +106,7 @@ with col1:
  
     sns.barplot(
         y="cnt_y", 
-        x="weathersit_condition",
+        x="weather_condition",
         data=sum_weathersit_df.sort_values(by="weathersit_y", ascending=False),
         palette=colors,
         ax=ax
