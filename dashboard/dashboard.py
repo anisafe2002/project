@@ -85,7 +85,7 @@ weekday_mapping = {
 }
 
 def get_weekday_condition(weekday_num):
-    return weekday_mapping.get(we_num, "Unknown")
+    return weekday_mapping.get(weekday_num, "Unknown")
 
 sum_weekday_df['weekday_condition'] = sum_weekday_df['weekday_y'].apply(get_weekday_condition)
 
