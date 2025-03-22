@@ -126,7 +126,7 @@ with col2:
     sns.barplot(
         y="cnt_y", 
         x="weekday_condition",
-        data=sum_weekday_df.sort_values(by="weejday_y", ascending=False),
+        data=sum_weekday_df.sort_values(by="weekday_y", ascending=False),
         palette=colors,
         ax=ax
     )
