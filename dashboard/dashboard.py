@@ -60,6 +60,37 @@ sum_weathersit_df = create_weathersit_df(main_df)
 sum_season_df = create_season_df(main_df)
 sum_weekday_df = create_weekday_df(main_df)
 
+weathersit_mapping = {
+    1: "Clear",
+    2: "Clouds",
+    3: "Rain",
+    4: "Snowfall"
+}
+
+def get_weather_condition(weathersit_num):
+    return weathersit_mapping.get(weathersit_num, "Unknown")
+
+sum_weathersit_df['weather_condition'] = sum_weathersit_df['weathersit_y'].apply(get_weather_condition)
+
+print(sum_weathersit_df)
+
+weekday_mapping = {
+    5: "Saturday",
+    4: "Friday",
+    6: "Sunday",
+    3: "Thursday",
+    2: "Wednesday",
+    1: "Tuesday",
+    0: "Monday"
+}
+
+def get_weekday_condition(weekday_num):
+    return weekday_mapping.get(we_num, "Unknown")
+
+sum_weekday_df['weekday_condition'] = sum_weekday_df['weekday_y'].apply(get_weekday_condition)
+
+print(sum_weekday_df)
+
 st.header('Dicoding Collection Dashboard :sparkles:')
 
 plt.figure(figsize=(10, 5))
@@ -75,8 +106,8 @@ with col1:
  
     sns.barplot(
         y="cnt_y", 
-        x="weathersit_y",
-        data=sum_weathersit_df.sort_values(by="cnt_y", ascending=False),
+        x="weathersit_condition",
+        data=sum_weathersit_df.sort_values(by="weathersit_y", ascending=False),
         palette=colors,
         ax=ax
     )
@@ -94,8 +125,8 @@ with col2:
  
     sns.barplot(
         y="cnt_y", 
-        x="weekday_y",
-        data=sum_weekday_df.sort_values(by="cnt_y", ascending=False),
+        x="weekday_condition",
+        data=sum_weekday_df.sort_values(by="weejday_y", ascending=False),
         palette=colors,
         ax=ax
     )
